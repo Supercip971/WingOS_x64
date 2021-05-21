@@ -2,8 +2,8 @@
 
 # inspired from https://github.com/ozkl/soso/blob/master/create-image.sh (from soso os) made by ozkl <3
 
-DISK="../build/disk.hdd"
-MNT_PATH="../mnt"
+DISK="./build/disk.hdd"
+MNT_PATH="./mnt"
 dd if=/dev/zero of=$DISK bs=250M count=1
 
 fdisk $DISK << EOF
@@ -26,10 +26,10 @@ mkdir -p $MNT_PATH
 sudo mount $LOOP_DISK_PARTIITION $MNT_PATH
 
 mkdir $MNT_PATH/initfs
-cp -r ../initfs/* $MNT_PATH/initfs/
-cp ../limine.cfg $MNT_PATH/limine.cfg
-cp ../limine/limine.sys $MNT_PATH/limine.sys
-cp ../kernel.elf $MNT_PATH/kernel.elf
+cp -r ./initfs/* $MNT_PATH/initfs/
+cp ./limine.cfg $MNT_PATH/limine.cfg
+cp ./limine/limine.sys $MNT_PATH/limine.sys
+cp ./kernel.elf $MNT_PATH/kernel.elf
 ls -la $MNT_PATH
 ls -la $MNT_PATH/initfs
 umount $MNT_PATH
@@ -39,4 +39,4 @@ sync
 
 fdisk -l $DISK
 
-../limine/limine-install-linux-x86_64 $DISK
+./limine/limine-install-linux-x86_64 $DISK
